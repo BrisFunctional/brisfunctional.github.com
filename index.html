@@ -3,6 +3,30 @@
   <head>
     <title>BrisFunctional - Bristol's functional programming club</title>
     <link rel="stylesheet" type="text/css"  href="brisfunctional.css"/>
+
+    <script language="javascript">
+
+	window.onload = function(){
+
+	        var logo = document.getElementById('logo');
+
+		logo.onclick = function(){
+			var angle = 0;
+			var spinjob = setInterval( function(){
+				logo.style[ "-webkit-transform" ] = "rotate(" + angle + "deg)";
+				logo.style[ "-moz-transform" ]    = "rotate(" + angle + "deg)";
+				angle += 5;
+				if ( angle > 360 ){
+					clearInterval(spinjob);
+				}
+			}, 20 )
+		}
+
+	}
+
+
+    </script>
+
   </head>
   
   <body>
