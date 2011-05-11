@@ -69,3 +69,8 @@ a:hover {
 #stripe a:hover {
  background-color: #86d;
 }
+
+#logo{
+	z-index: -100;
+}
+

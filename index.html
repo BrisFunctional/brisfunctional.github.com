@@ -6,33 +6,74 @@
 
     <script language="javascript">
 
-	window.onload = function(){
+
+		var doShadow = function(element, r, theta, steps, h, wobble){
+		
+			var dr = r;
+			var	drops = [];
+
+			for (var i=0; i<steps; i+=0.5){
+
+				var dx = r * Math.sin(theta+Math.sin(wobble + i*2*Math.PI/steps));
+				var dy = r * Math.cos(theta+Math.sin(wobble + i*2*Math.PI/steps));
+
+				drops.push( dx+"px "+dy+"px hsl("+Math.round(h+i*720/steps)+",100%,50%)" );
+				r++;
+			}
+
+			var shadow = drops.join(",");
+			element.style["text-shadow"] = shadow;
+		}
+
+		var goMental = function( element, dAngle, dCol, dWob ){
+			var angle = Math.random()*3, starth=0, wobble=0;
+			setInterval( function(){
+				doShadow(element, 1, angle, 100, starth, wobble );
+				angle += dAngle;
+				starth -= dCol;
+				wobble += dWob;
+			} , 50);
+
+		}
+
+		window.onload = function(){
+
+	        var title = document.getElementById('title');
+
+			title.onclick = function(){
+				for ( var i=1; i<=14; i++ ){
+					goMental( document.getElementById("title"+i), Math.random()*0.1, Math.random()*5, Math.random()*0.1+0.1 );
+				}
+			}
+
 
 	        var logo = document.getElementById('logo');
 
-		logo.onclick = function(){
-			var angle = 0;
-			var spinjob = setInterval( function(){
-				logo.style[ "-webkit-transform" ] = "rotate(" + angle + "deg)";
-				logo.style[ "-moz-transform" ]    = "rotate(" + angle + "deg)";
-				angle += 5;
-				if ( angle > 360 ){
-					clearInterval(spinjob);
-				}
-			}, 20 )
+			logo.onclick = function(){
+				var angle = 0;
+				var spinjob = setInterval( function(){
+					logo.style[ "-webkit-transform" ] = "rotate(" + angle + "deg)";
+					logo.style[ "-moz-transform" ]    = "rotate(" + angle + "deg)";
+					angle += 5;
+					if ( angle > 360 ){
+						clearInterval(spinjob);
+					}
+				}, 20 )
+			}
+
+
 		}
 
-	}
-
-
-    </script>
+	</script>
 
   </head>
   
   <body>
   
-  <h1>BrisFunctional</h1>
-  
+<h1 id="title">
+  <span id="title1">B</span><span id="title2">r</span><span id="title3">i</span><span id="title4">s</span><span id="title5">F</span><span id="title6">u</span><span id="title7">n</span><span id="title8">c</span><span id="title9">t</span><span id="title10">i</span><span id="title11">o</span><span id="title12">n</span><span id="title13">a</span><span id="title14">l</span>
+</h1>
+
     <img id="logo" src="Sierpinski_white.png"/> 
  
     <div id="main"> 
