@@ -44,6 +44,10 @@ h1 {
  padding-top: 32px; padding-bottom: 32px; font-size: 300%;
 }
 
+h2 {
+ padding-top: 32px; font-size: 200%;
+}
+
 div {
  line-height: 1.5em;
 }
@@ -72,5 +76,13 @@ a:hover {
 
 #logo{
 	z-index: -100;
+}
+
+ul{
+margin-top: 20px;
+}
+
+li{
+  margin-top: 10px;
 }
 
